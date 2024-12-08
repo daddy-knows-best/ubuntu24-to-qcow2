@@ -1,11 +1,10 @@
-# hash-env
+# ubuntu24 cloud image to qcow2
 
-hash-env for Daddy Knows Best
+Ubuntu24 Cloud image to qcow2 format
 
 # history
 
-- 03/08/2024 hash-env initiated, updated README.md
-- 09/26/24 updated with the new base image ubuntu 24 [ISSUE-27](https://github.com/daddy-knows-best/hash-env/issues/27)
+- 12/07/24 Repo was creted
 
 # how to run
 
@@ -13,18 +12,41 @@ hash-env for Daddy Knows Best
 $ docker compose pull
 
 $ docker compose run --rm dev-env
-05:10:10 ubuntu@751f2cd90584 dev-env ±|readme|→ consul -v
-Consul v1.18.0
-Revision 349cec17
-Build Date 2024-02-26T22:05:50Z
-Protocol 2 spoken by default, understands 2 to 3 (agent will automatically use protocol >2 when speaking to compatible agents)
+05:26:05 ubuntu@3a489f33f21f dev-env ±|main ✗|→ time ./build.sh
+Installed plugin github.com/hashicorp/qemu v1.1.0 in "/home/ubuntu/.config/packer/plugins/github.com/hashicorp/qemu/packer-plugin-qemu_v1.1.0_x5.0_linux_amd64"
+qemu.noble: output will be in this color.
 
-05:10:14 ubuntu@751f2cd90584 dev-env ±|readme|→ packer -v
-Packer v1.10.2
-05:10:21 ubuntu@751f2cd90584 dev-env ±|readme|→ terraform -v
-Terraform v1.7.4
-on linux_amd64
-05:10:26 ubuntu@751f2cd90584 dev-env ±|readme|→ vault -v
-Vault v1.15.6 (615cf6f1dce9aa91bc2035ce33b9f689952218f0), built 2024-02-28T17:07:34Z
-05:10:37 ubuntu@751f2cd90584 dev-env ±|readme|→
+==> qemu.noble: Retrieving ISO
+==> qemu.noble: Trying https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img
+==> qemu.noble: Trying https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img?checksum=sha256%3A7be7793856d65784a593a624e841dbcf94aa36d3a9511f4085a808c4564f9d1e
+    qemu.noble: noble-server-cloudimg-amd64.img 580.52 MiB / 580.52 MiB [================================================================================] 100.00% 32s
+==> qemu.noble: https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img?checksum=sha256%3A7be7793856d65784a593a624e841dbcf94aa36d3a9511f4085a808c4564f9d1e => /home/ubuntu/.cache/packer/4c16d73884405f33c9c6c34c22fedb82a48e4b65.iso
+==> qemu.noble: Copying hard drive...
+==> qemu.noble: Resizing hard drive...
+==> qemu.noble: Starting HTTP server on port 8866
+==> qemu.noble: Found port for communicator (SSH, WinRM, etc): 3684.
+==> qemu.noble: Using existing SSH private key
+==> qemu.noble: Looking for available port between 5900 and 6000 on 127.0.0.1
+==> qemu.noble: Starting VM, booting disk image
+==> qemu.noble: Overriding default Qemu arguments with qemuargs template option...
+==> qemu.noble: Waiting 10s for boot...
+==> qemu.noble: Connecting to VM via VNC (127.0.0.1:5955)
+==> qemu.noble: Typing the boot commands over VNC...
+    qemu.noble: Not using a NetBridge -- skipping StepWaitGuestAddress
+==> qemu.noble: Using SSH communicator to connect: 127.0.0.1
+==> qemu.noble: Waiting for SSH to become available...
+==> qemu.noble: Connected to SSH!
+==> qemu.noble: Gracefully halting virtual machine...
+==> qemu.noble: Converting hard drive...
+Build 'qemu.noble' finished after 17 minutes 29 seconds.
+
+==> Wait completed after 17 minutes 29 seconds
+
+==> Builds finished. The artifacts of successful builds are:
+--> qemu.noble: VM files in directory: output
+
+real    17m34.362s
+user    15m51.413s
+sys     3m39.363s
+05:43:50 ubuntu@3a489f33f21f dev-env ±|main ✗|→
 ```
