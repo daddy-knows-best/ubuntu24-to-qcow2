@@ -6,6 +6,12 @@ packer {
       source  = "github.com/hashicorp/qemu"
     }
   }
+  required_plugins {
+    ansible = {
+      version = ">= 1.1.2"
+      source = "github.com/hashicorp/ansible"
+    }
+  }
 }
 
 source "qemu" "noble" {
@@ -30,7 +36,7 @@ source "qemu" "noble" {
   vm_name                   = "noble"
   qemuargs = [
     ["-display", "none"],
-    ["-cdrom", "disk-ssh-pub-ubuntu.img"]
+    ["-cdrom", "disk-ssh-pub.img"]
   ]
 }
 
@@ -87,8 +93,15 @@ source "qemu" "focal" {
 }
 
 build {
-  #sources = ["source.qemu.focal", "source.qemu.jammy", "source.qemu.noble"]
-  #sources = ["source.qemu.jammy"]
-  #sources = ["source.qemu.focal"]
   sources = ["source.qemu.noble"]
+
+  provisioner "shell" {
+    script = "shell/shell-provisioner.sh"
+  }
+
+  provisioner "ansible" {
+    playbook_file = "ansible/playbook.yaml"
+    extra_arguments = [ "--scp-extra-args", "'-O'" ]
+  }
+
 }
