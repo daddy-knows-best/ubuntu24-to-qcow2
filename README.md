@@ -9,6 +9,8 @@ Ubuntu24 Cloud image to qcow2 format
 
 # how to run
 
+Running from the provided docker container:
+
 ```
 $ docker compose pull
 
