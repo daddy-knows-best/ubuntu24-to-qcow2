@@ -9,12 +9,6 @@ Ubuntu24 Cloud image to qcow2 format
 
 # how to run
 
-```
-$ docker compose pull
-
-$ docker compose run --rm dev-env
-
-```
 
 If you have QEMU/KVM enabled machine, then you can build way faster:
 
